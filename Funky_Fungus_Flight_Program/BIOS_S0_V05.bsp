@@ -1,6 +1,6 @@
 ' {$STAMP BS2p, BIOS_S1_V05.bsp, BIOS_S2_V05.bsp, BIOS_S3_V05.bsp, BIOS_S4_V05.bsp, BIOS_S5_V05.bsp, BIOS_S6_V05.bsp, BIOS_S7_V05.bsp}
 ' {$PBASIC 2.5}
-' {$PORT COM5}
+' {$PORT COM1}
 '**************************************************
 '
 '  Program Slot 0 = Startup program and exec routines
@@ -631,18 +631,18 @@ TakePhotoReturn:
 
          OneCycle = OneCycle + 1 ' Kasvata tuntilaskuria yhdella
 
-         DEBUG ?OneCycle ' Tulosta tuntimaara
-         IF OneCycle = 4 THEN ' Kun 4 tuntia on kulunut, tee alla olevia asioita
-           DEBUG "Watering", CR ' Ilmoita kastelun aloittamisesta
-           HIGH 14 ' Laita pinnissa 14 oleva pumppu paalle
-           PAUSE 60000 ' Kun pumppu on paalla, odota 60 sekuntia
-           LOW 14 ' Laita pinnissa 14 oleva pumppu pois paalta
-           DEBUG "Stopped watering", CR ' Ilmoita kastelun lopettamisesta
+         DEBUG ?OneCycle                          ' Tulosta tuntimaara
+         IF OneCycle = 4                          ' Kun 4 tuntia on kulunut, tee alla olevia asioita
+           DEBUG "Watering", CR                   ' Ilmoita kastelun aloittamisesta
+           HIGH 14                                ' Laita pinnissa 14 oleva pumppu paalle
+           PAUSE 120000                           ' Kun pumppu on paalla, odota 120 sekuntia pumppaa 1.6ml, 0.8ml/min
+           LOW 14                                 ' Laita pinnissa 14 oleva pumppu pois paalta
+           DEBUG "Stopped watering", CR           ' Ilmoita kastelun lopettamisesta
          ENDIF
 
          IF OneCycle = 24 THEN
            HIGH 14
-           PAUSE 30000
+           PAUSE 75000                            ' Kun pumppu on paalla, odota 75 sekuntia pumppaa 1ml
            LOW 14
            DEBUG "Stopped watering", CR
          ENDIF
@@ -650,7 +650,7 @@ TakePhotoReturn:
          IF OneCycle // 72 = 0 THEN
            DEBUG "Watering", CR
            HIGH 14
-           PAUSE 20000
+           PAUSE 75000                            ' Kun pumppu on paalla, odota 75 sekuntia pumppaa 1ml
            LOW 14
            DEBUG "Stopped watering", CR
          ENDIF

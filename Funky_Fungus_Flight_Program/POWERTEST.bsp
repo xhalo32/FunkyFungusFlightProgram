@@ -1,0 +1,6 @@
+' {$STAMP BS2p}
+' {$PBASIC 2.5}
+' {$PORT COM5}
+
+HIGH 14
+

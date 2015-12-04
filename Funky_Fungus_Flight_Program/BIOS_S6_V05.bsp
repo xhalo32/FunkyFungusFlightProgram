@@ -1,6 +1,6 @@
 ' {$STAMP BS2p}
 ' {$PBASIC 2.5}
-' {$PORT COM8}
+' {$PORT COM1}
 '**************************************************
 '
 '2011 ISS BIOS System Slot
