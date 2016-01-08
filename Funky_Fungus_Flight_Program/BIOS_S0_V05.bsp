@@ -618,8 +618,8 @@ HeartBeat3Return:
          '
          '   Take a High Resoluation Photo of the Chamber
          'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-'         PUT    CameraRes,Camera640        'set to 640x480 res
-         PUT    CameraRes,Camera320        'Templet default
+         PUT    CameraRes,Camera640        'set to 640x480 res
+'         PUT    CameraRes,Camera320        'Templet default
          PUT    CameraQua,CameraNormal     'set to Normal
          GOTO TakePhoto     'Take a photo, set default text, mark for upload
 TakePhotoReturn:
@@ -649,7 +649,7 @@ TakePhotoReturn:
            DEBUG "Stopped watering", CR
          ENDIF
 
-         IF OneCycle // 72 = 0 THEN
+         IF OneCycle // 120 = 0 THEN
            DEBUG "Watering", CR
            HIGH 14
            PAUSE 60000                            ' Kun pumppu on paalla, odota 75 sekuntia pumppaa 1ml
