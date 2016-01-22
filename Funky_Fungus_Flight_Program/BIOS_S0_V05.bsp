@@ -18,7 +18,7 @@ version   CON    13
 '******************  Start of System Global lables *******************
 '     Conditional Assemblies
 '
-#DEFINE FlyConfig = 0              '1=Set to Flight Configuration, 0=Test Configuration
+#DEFINE FlyConfig = 1              '1=Set to Flight Configuration, 0=Test Configuration
 #DEFINE fastclock = 0              '0=Normal Time X1, 1=Medium Time ~X17 2=Fast Time ~X60
 #DEFINE testreset = 1              '1=test reset and reset count
 #DEFINE SaySlot   = 1              '1=Say Slot with vector
@@ -635,9 +635,34 @@ TakePhotoReturn:
          IF OneCycle = 4 THEN                     ' Kun 4 tuntia on kulunut, tee alla olevia asioita
            DEBUG "Watering", CR                   ' Ilmoita kastelun aloittamisesta
            HIGH 14                                ' Laita pinnissa 14 oleva pumppu paalle
-           PAUSE 60000                            ' Kun pumppu on paalla, odota 120 sekuntia pumppaa 1.6ml, 0.8ml/min
-           PAUSE 60000
+           PAUSE 60000                            ' Kun pumppu on paalla, odota 60 sekuntia 6 kertaa pumppaa 4.8ml, 0.8ml/min
            LOW 14                                 ' Laita pinnissa 14 oleva pumppu pois paalta
+           PAUSE 60000
+           PAUSE 60000
+           HIGH 14
+           PAUSE 60000
+           LOW 14
+           PAUSE 60000
+           PAUSE 60000
+           HIGH 14
+           PAUSE 60000
+           LOW 14
+           PAUSE 60000
+           PAUSE 60000
+           HIGH 14
+           PAUSE 60000
+           LOW 14
+           PAUSE 60000
+           PAUSE 60000
+           HIGH 14
+           PAUSE 60000
+           LOW 14
+           PAUSE 60000
+           PAUSE 60000
+           HIGH 14
+           PAUSE 60000
+           LOW 14
+
            DEBUG "Stopped watering", CR           ' Ilmoita kastelun lopettamisesta
          ENDIF
 
